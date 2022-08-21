@@ -7,7 +7,7 @@ set(CMAKE_VERBOSE_MAKEFILE OFF)
 include_directories(/usr/local/include)
 include_directories(external/glm)
 include_directories(external/imgui)
-include_directories(external/rttr/include)
+include_directories(/usr/local/rttr/include)
 
 aux_source_directory("external/imgui" SRCS)
 aux_source_directory("src" SRCS)
@@ -16,7 +16,7 @@ aux_source_directory("external" SRCS)
 aux_source_directory("external/glad" SRCS)
 aux_source_directory("external/KHR" SRCS)
 
-link_directories(/Users/christine/Desktop/Games101/UntitledEngine/external/rttr/lib)
+link_directories(/usr/local/rttr/lib)
 
 add_library(jsoncpp SHARED IMPORTED)
 set_target_properties(jsoncpp PROPERTIES
