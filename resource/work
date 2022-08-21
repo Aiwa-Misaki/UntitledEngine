@@ -1,0 +1,7 @@
+{
+	"name":"SampleWork",
+	"sceneList":[
+	    "scenes/Scene1",
+	    "scenes/Scene2"
+	]
+}

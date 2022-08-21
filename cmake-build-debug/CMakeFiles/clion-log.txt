@@ -1,0 +1,4 @@
+/Applications/CMake.app/Contents/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/ninja -G Ninja -S /Users/christine/Desktop/Games101/UntitledEngine -B /Users/christine/Desktop/Games101/UntitledEngine/cmake-build-debug
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/christine/Desktop/Games101/UntitledEngine/cmake-build-debug
