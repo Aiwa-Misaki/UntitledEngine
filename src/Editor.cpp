@@ -27,6 +27,9 @@ Editor::Editor() {
     //初始化渲染系统
     renderSystem= make_shared<RenderSystem>(work->curScene);
     cout<<"初始化渲染系统成功"<<endl;
+
+    //初始化UI显示相关的变量
+    editorUI->initEditorUIContext();
 }
 
 void Editor::run() const

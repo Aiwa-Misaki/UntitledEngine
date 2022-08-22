@@ -12,6 +12,7 @@
 #include"camera.h"
 #include"Editor.h"
 class Editor;
+class Scene;
 class RenderSystem {
 public:
     bool renderMode=false;//false:编辑器模式 true:场景模式

@@ -17,8 +17,10 @@
 #include<rttr/instance.h>
 #include"ComponentManager.h"
 #include"Components/MeshRenderer.h"
+#include"Editor.h"
 using namespace rttr;
 using namespace std;
+class Editor;
 class GameObject {
 public:
     string name;
@@ -40,7 +42,19 @@ public:
                 return child_ptr;
             }
         }
+        return nullptr ;
     }
+   int getLevel()
+   {
+       int num=0;
+       for(int i=0;i<parentFullDir.size();i++)
+       {
+           if(parentFullDir[i]=='/')
+               num++;
+       }
+       return num;
+   }
+   shared_ptr<GameObject> parent();
 };
 
 

@@ -9,6 +9,7 @@
 #include<iostream>
 #include"json.h"
 using namespace std;
+class Scene;
 class Work {
 public:
     string name;

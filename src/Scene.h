@@ -11,6 +11,7 @@
 #include"Json.h"
 #include<iostream>
 using namespace std;
+class GameObject;
 class Scene {
 public:
     string name;

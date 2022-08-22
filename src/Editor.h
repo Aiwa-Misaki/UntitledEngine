@@ -9,7 +9,11 @@
 #include "EditorUI.h"
 #include"RenderSystem.h"
 #include"Work.h"
+#include"GameObject.h"
+class GameObject;
 class RenderSystem;
+class EditorUI;
+class Work;
 class Editor {
 public:
     shared_ptr<EditorWindow>editorWindow;

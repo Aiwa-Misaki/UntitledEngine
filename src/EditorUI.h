@@ -8,11 +8,18 @@
 #include"imgui.h"
 #include"imgui_impl_glfw.h"
 #include"imgui_impl_opengl3.h"
+#include"Editor.h"
+#include<unordered_map>
+class Editor;
 class EditorUI {
 public:
     EditorUI(GLFWwindow*);
     ~EditorUI();
     void tick();
+    //初始化一些显示UI需要用到的变量的值
+    void initEditorUIContext();
+    //物体列表中的某个物体菜单是否折叠 false：折叠 true：不折叠
+    shared_ptr<unordered_map<string,bool>>gameObjectMenuShow;
 };
 
 

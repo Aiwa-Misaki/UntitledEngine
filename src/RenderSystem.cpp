@@ -19,6 +19,8 @@ lightCubeShader("../2.2.light_cube.vs", "../2.2.light_cube.fs"){
         string key=*iter;
         auto obj=scene->gameObjectList->at(key);
         auto mr=obj->getComponent<MeshRenderer>();
+        if(mr==nullptr)
+            continue;
         meshSubmit(mr->mesh);
     }
 
@@ -89,6 +91,8 @@ void RenderSystem::tick()
         string key=*i;
         auto obj=Editor::instance->work->curScene->gameObjectList->at(key);
         auto mr=obj->getComponent<MeshRenderer>();
+        if(mr==nullptr)
+            continue;
         glm::mat4 model = glm::mat4(1.0f);
         model=glm::scale(model,obj->getComponent<Transform>()->scale);
         model=glm::rotate(model,glm::radians(obj->getComponent<Transform>()->rotation[0]),

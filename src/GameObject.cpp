@@ -49,3 +49,10 @@ GameObject::GameObject(Json::Value &json)
     //getComponent<Transform>();
 
 }
+
+shared_ptr<GameObject> GameObject::parent()
+{
+    string tempDir=dir;
+    tempDir.pop_back();
+    return Editor::instance->work->curScene->gameObjectList->at(tempDir);
+}
