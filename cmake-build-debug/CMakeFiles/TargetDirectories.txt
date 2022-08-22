@@ -1,3 +1,0 @@
-/Users/christine/Desktop/Games101/UntitledEngine/cmake-build-debug/CMakeFiles/UntitledEngine.dir
-/Users/christine/Desktop/Games101/UntitledEngine/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/christine/Desktop/Games101/UntitledEngine/cmake-build-debug/CMakeFiles/rebuild_cache.dir
