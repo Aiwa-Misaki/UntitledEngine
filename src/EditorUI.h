@@ -9,6 +9,7 @@
 #include"imgui_impl_glfw.h"
 #include"imgui_impl_opengl3.h"
 #include"Editor.h"
+#include"Editors/InspectorUI.h"
 #include<unordered_map>
 class Editor;
 class EditorUI {

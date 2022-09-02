@@ -32,6 +32,10 @@ Editor::Editor() {
     editorUI->initEditorUIContext();
 }
 
+shared_ptr<Scene> Editor::getCurScene()
+{
+    return Editor::instance->work->curScene;
+}
 void Editor::run() const
 {
     while (!glfwWindowShouldClose(editorWindow->window))

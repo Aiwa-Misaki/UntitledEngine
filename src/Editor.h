@@ -10,16 +10,20 @@
 #include"RenderSystem.h"
 #include"Work.h"
 #include"GameObject.h"
+#include"Editors/InspectorUI.h"
+
 class GameObject;
 class RenderSystem;
 class EditorUI;
 class Work;
+class InspectorUI;
 class Editor {
 public:
     shared_ptr<EditorWindow>editorWindow;
     shared_ptr<EditorUI>editorUI;
     shared_ptr<RenderSystem>renderSystem;
     shared_ptr<Work>work;
+    static shared_ptr<Scene>getCurScene();
     Editor();
     void run() const;
     static Editor* instance;

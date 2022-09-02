@@ -17,7 +17,7 @@
 #include<rttr/instance.h>
 #include"ComponentManager.h"
 #include"Components/MeshRenderer.h"
-#include"Editor.h"
+
 using namespace rttr;
 using namespace std;
 class Editor;

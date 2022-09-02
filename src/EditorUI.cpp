@@ -85,6 +85,7 @@ void EditorUI::tick()
                     bool isClick=ImGui::Button(name.c_str(),ImVec2(100,20));
                     if(isClick)
                     {
+                        InspectorUI::chooseGameObjectName=obj->parentFullDir;
                         if(gameObjectMenuShow->at(key)==false)
                             gameObjectMenuShow->at(key)=true;
                         else
@@ -106,6 +107,9 @@ void EditorUI::tick()
         ImGui::Begin("Inspector");
         ImGui::SetWindowPos("Inspector",ImVec2(1150,10));
         ImGui::SetWindowSize("Inspector",ImVec2(250,500));
+        if(InspectorUI::chooseGameObjectName!="")
+        InspectorUI::showComponentList(Editor::getCurScene()->gameObjectList->at(InspectorUI::chooseGameObjectName));
+
         ImGui::End();
 
         ImGui::Begin("Files");
