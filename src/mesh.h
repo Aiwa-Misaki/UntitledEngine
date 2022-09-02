@@ -29,6 +29,7 @@ struct Texture {
 };
 class Mesh {
 public:
+    string url;
     /*  网格数据  */
     vector<Vertex> vertices;
     vector<unsigned int> indices;

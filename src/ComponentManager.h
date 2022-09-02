@@ -12,11 +12,12 @@
 #include <assimp/postprocess.h>     // Post processing flags
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+
 class ComponentManager {
 
 public :
     static const type int_type,vec3_type,str_type;
-    static const type mesh_type;
+    static const type mesh_type,mesh_ptr_type;
     static const void deserialize(Json::Value &json,instance &ins,type &t)
     {
         int propertyNum=json.getMemberNames().size();
@@ -83,6 +84,7 @@ public :
                     //cout<<"indices.size:"<<indices.size()<<endl;
                     vector<Texture>textures;
                     shared_ptr<Mesh> mesh= make_shared<Mesh>();
+                    mesh->url=meshUrl;
                     //cout<<"w"<<endl;
                     mesh->setupMesh(vertices,indices,textures);
                     //cout<<"verts:"<<mesh->vertices.size()<<endl;
@@ -91,6 +93,18 @@ public :
 
             }
         }
+    }
+    static const string getValueStr(variant &prop_value,type &prop_type)
+    {
+        if(prop_type==int_type)
+            return prop_value.to_string();
+        if(prop_type==str_type)
+            return prop_value.to_string();
+        if(prop_type==mesh_type)
+        {
+            return prop_value.get_value<shared_ptr<Mesh>>()->url;
+        }
+        return "";
     }
 
 };
