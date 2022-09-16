@@ -24,6 +24,9 @@ void EditorUI::initEditorUIContext() {
     gameObjectMenuShow= make_shared<unordered_map<string,bool>>();
     for(int i=0;i<gameObjectNum;i++)
         gameObjectMenuShow->insert(make_pair(Editor::instance->work->curScene->gameObjectNameList->at(i),true));
+
+    //初始化文件管理器
+    fileManager= make_shared<FileManager>();
 }
 
 EditorUI::~EditorUI() {
@@ -114,6 +117,7 @@ void EditorUI::tick()
 
         ImGui::Begin("Files");
         ImGui::SetWindowPos("Files",ImVec2(10,530));
+        fileManager->showFilesList();
         ImGui::SetWindowSize("Files",ImVec2(1400,220));
         ImGui::End();
     }

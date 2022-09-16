@@ -13,6 +13,7 @@
 #include <rttr/registration>
 #include<rttr/instance.h>
 #include"../ComponentManager.h"
+
 using namespace std;
 class InspectorUI {
 public:

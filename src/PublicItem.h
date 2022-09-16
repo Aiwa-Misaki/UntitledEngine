@@ -7,3 +7,5 @@
 #include<iostream>
 using namespace std;
 #endif //UNTITLEDENGINE_PUBLICITEM_H
+
+const string DEFAULT_WORK_PATH="../resource";

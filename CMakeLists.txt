@@ -28,6 +28,6 @@ set_target_properties(jsoncpp PROPERTIES
 set(CMAKE_CXX_FLAGS "-g -std=c++11 -Wformat")
 find_package(assimp REQUIRED)
 link_directories(/usr/local/Cellar/glfw/3.3.2/lib)
-add_executable(UntitledEngine ${SRCS} ${HDRS} PublicItem.h)
+add_executable(UntitledEngine ${SRCS} ${HDRS} src/PublicItem.h src/Editors/FileManager.cpp src/Editors/FileManager.h)
 
 target_link_libraries(UntitledEngine GLFW assimp::assimp jsoncpp librttr_core_d.dylib)

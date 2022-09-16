@@ -10,7 +10,9 @@
 #include"imgui_impl_opengl3.h"
 #include"Editor.h"
 #include"Editors/InspectorUI.h"
+#include"Editors/FileManager.h"
 #include<unordered_map>
+
 class Editor;
 class EditorUI {
 public:
@@ -21,6 +23,7 @@ public:
     void initEditorUIContext();
     //物体列表中的某个物体菜单是否折叠 false：折叠 true：不折叠
     shared_ptr<unordered_map<string,bool>>gameObjectMenuShow;
+    shared_ptr<FileManager> fileManager;
 };
 
 
