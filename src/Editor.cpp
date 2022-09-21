@@ -12,20 +12,10 @@ Editor::Editor() {
     editorWindow= make_shared<EditorWindow>();
     //创建编辑器UI系统
     editorUI= make_shared<EditorUI>(editorWindow->window);
-    //加载一个游戏工程到内存中
-    string workUrl="../resource/work";
-    Json::Reader reader;
-    Json::Value read_value;
-    ifstream in(workUrl);
-    stringstream buf;
-    buf<<in.rdbuf();
-    string str_json(buf.str());
-    reader.parse(str_json, read_value);
-    work= make_shared<Work>(read_value);
-    cout<<"加载项目"<<work->name<<"成功"<<endl;
-    in.close();
+    //创建引擎示例（这里尝试使用另一种单例模式）
+    Engine::init();
     //初始化渲染系统
-    renderSystem= make_shared<RenderSystem>(work->curScene);
+    renderSystem= make_shared<RenderSystem>(Engine::getCurWork()->curScene);
     cout<<"初始化渲染系统成功"<<endl;
 
     //初始化UI显示相关的变量
@@ -34,7 +24,7 @@ Editor::Editor() {
 
 shared_ptr<Scene> Editor::getCurScene()
 {
-    return Editor::instance->work->curScene;
+    return Engine::getCurWork()->curScene;
 }
 void Editor::run() const
 {

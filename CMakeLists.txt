@@ -19,7 +19,7 @@ aux_source_directory("external/KHR" SRCS)
 
 link_directories(/usr/local/rttr/lib)
 
-add_library(jsoncpp SHARED IMPORTED)
+add_library(jsoncpp SHARED IMPORTED src/Engine.cpp src/Engine.h)
 set_target_properties(jsoncpp PROPERTIES
         IMPORTED_LOCATION "/usr/local/lib/libjsoncpp.dylib"
         INTERFACE_INCLUDE_DIRECTORIES "/usr/local/include/json"
@@ -28,6 +28,5 @@ set_target_properties(jsoncpp PROPERTIES
 set(CMAKE_CXX_FLAGS "-g -std=c++11 -Wformat")
 find_package(assimp REQUIRED)
 link_directories(/usr/local/Cellar/glfw/3.3.2/lib)
-add_executable(UntitledEngine ${SRCS} ${HDRS} src/PublicItem.h src/Editors/FileManager.cpp src/Editors/FileManager.h)
-
+add_executable(UntitledEngine ${SRCS} ${HDRS} )
 target_link_libraries(UntitledEngine GLFW assimp::assimp jsoncpp librttr_core_d.dylib)

@@ -20,10 +20,10 @@ EditorUI::EditorUI(GLFWwindow *window) {
 
 void EditorUI::initEditorUIContext() {
     //初始化物体列表显示与否（一开始全都显示）
-    int gameObjectNum=Editor::instance->work->curScene->gameObjectNameList->size();
+    int gameObjectNum=Engine::getCurWork()->curScene->gameObjectNameList->size();
     gameObjectMenuShow= make_shared<unordered_map<string,bool>>();
     for(int i=0;i<gameObjectNum;i++)
-        gameObjectMenuShow->insert(make_pair(Editor::instance->work->curScene->gameObjectNameList->at(i),true));
+        gameObjectMenuShow->insert(make_pair(Engine::getCurWork()->curScene->gameObjectNameList->at(i),true));
 
     //初始化文件管理器
     fileManager= make_shared<FileManager>();
@@ -58,12 +58,12 @@ void EditorUI::tick()
 
         {
             int index=0;
-            for(auto iter=Editor::instance->work->curScene->gameObjectNameList->begin();
-                iter!=Editor::instance->work->curScene->gameObjectNameList->end();iter++)
+            for(auto iter=Engine::getCurWork()->curScene->gameObjectNameList->begin();
+                iter!=Engine::getCurWork()->curScene->gameObjectNameList->end();iter++)
             {
                 string key=*iter;
 
-                auto obj=Editor::instance->work->curScene->gameObjectList->at(key);
+                auto obj=Engine::getCurWork()->curScene->gameObjectList->at(key);
                 string name=obj->name;
                 int level=obj->getLevel();
                 bool isShow=true;

@@ -11,6 +11,7 @@
 #include"Work.h"
 #include"GameObject.h"
 #include"Editors/InspectorUI.h"
+#include "Engine.h"
 
 class GameObject;
 class RenderSystem;
@@ -22,7 +23,6 @@ public:
     shared_ptr<EditorWindow>editorWindow;
     shared_ptr<EditorUI>editorUI;
     shared_ptr<RenderSystem>renderSystem;
-    shared_ptr<Work>work;
     static shared_ptr<Scene>getCurScene();
     Editor();
     void run() const;

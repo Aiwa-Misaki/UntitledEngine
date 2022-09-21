@@ -85,11 +85,11 @@ void RenderSystem::tick()
     //glDrawArrays(GL_TRIANGLES, 0, 36);
 
 
-    for(auto i=Editor::instance->work->curScene->gameObjectNameList->begin();
-    i!=Editor::instance->work->curScene->gameObjectNameList->end();i++)
+    for(auto i=Engine::getCurWork()->curScene->gameObjectNameList->begin();
+    i!=Engine::getCurWork()->curScene->gameObjectNameList->end();i++)
     {
         string key=*i;
-        auto obj=Editor::instance->work->curScene->gameObjectList->at(key);
+        auto obj=Engine::getCurWork()->curScene->gameObjectList->at(key);
         auto mr=obj->getComponent<MeshRenderer>();
         if(mr==nullptr)
             continue;
