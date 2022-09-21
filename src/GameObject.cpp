@@ -3,7 +3,24 @@
 //
 
 #include "GameObject.h"
-#include"Editor.h"
+#include"Engine.h"
+
+/*
+template<typename T>
+shared_ptr<T> GameObject::getComponent()
+{
+    type t=type::get<T>();
+    for(auto iter=componentTable->begin();iter!=componentTable->end();iter++)
+    {
+        type t1=type::get(*(iter->second));
+        if(t==t1)
+        {
+            shared_ptr<T> child_ptr= dynamic_pointer_cast<T>(iter->second);
+            return child_ptr;
+        }
+    }
+    return nullptr ;
+}*/
 GameObject::GameObject(Json::Value &json)
 {
 

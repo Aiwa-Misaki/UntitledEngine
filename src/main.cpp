@@ -12,7 +12,7 @@
 #include"imgui_impl_glfw.h"
 #include"imgui_impl_opengl3.h"
 #include"Editor.h"
-
+#include"Components/MeshRenderer.h"
 #include"json.h"
 #include"Work.h"
 

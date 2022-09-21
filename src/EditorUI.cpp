@@ -3,7 +3,7 @@
 //
 
 #include "EditorUI.h"
-
+#include"Editor.h"
 EditorUI::EditorUI(GLFWwindow *window) {
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();

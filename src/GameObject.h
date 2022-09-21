@@ -9,25 +9,26 @@
 #include<unordered_map>
 #include"Components/Transform.h"
 #include"Components/Component.h"
+#include"Components/MeshRenderer.h"
 #include"Json.h"
-#include"stdlib.h"
-#include"stdio.h"
+#include<cstdio>
+#include<cstdlib>
 #include<iostream>
 #include <rttr/registration>
 #include<rttr/instance.h>
 #include"ComponentManager.h"
-#include"Components/MeshRenderer.h"
+
 
 using namespace rttr;
 using namespace std;
-class Editor;
+//class Engine;
 class GameObject {
 public:
     string name;
     string dir;//dir plus name must be unique. dir:like aaa/bbb/ccc/
     string parentFullDir;//full dir includes dir and name, like aaa/bbb/ccc/ddd
     shared_ptr<unordered_map<string,shared_ptr<Component>>> componentTable;
-    GameObject(Json::Value& );
+    explicit GameObject(Json::Value& );
 
     template<typename T>
     shared_ptr<T> getComponent()
@@ -44,6 +45,7 @@ public:
         }
         return nullptr ;
     }
+    
    int getLevel()
    {
        int num=0;

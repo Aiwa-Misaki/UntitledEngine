@@ -8,10 +8,6 @@
 #include"EditorWindow.h"
 #include "EditorUI.h"
 #include"RenderSystem.h"
-#include"Work.h"
-#include"GameObject.h"
-#include"Editors/InspectorUI.h"
-#include "Engine.h"
 
 class GameObject;
 class RenderSystem;

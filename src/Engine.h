@@ -7,6 +7,7 @@
 #include"json.h"
 #include<iostream>
 #include "Work.h"
+#include"RuntimeResManager.h"
 using namespace std;
 class Engine {
 public:

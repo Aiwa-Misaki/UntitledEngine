@@ -4,7 +4,27 @@
 
 #include "RuntimeResManager.h"
 
+shared_ptr<unordered_map<string,shared_ptr<Mesh>>> RuntimeResManager::meshMap= nullptr;
 RuntimeResManager *RuntimeResManager::instance= nullptr;
 RuntimeResManager::RuntimeResManager() {
-    instance=this;
+
 }
+
+void RuntimeResManager::init()
+{
+    instance=new RuntimeResManager();
+    meshMap= make_shared<unordered_map<string,shared_ptr<Mesh>>>();
+
+}
+/*
+template<typename T>
+T RuntimeResManager::getRes(string path){
+    type t=type::get<T>();
+    //资源是网格类型
+    if(t==type::get<shared_ptr<Mesh>>())
+    {
+        shared_ptr<Mesh> tm= make_shared<Mesh>(path);
+        meshMap->insert(pair<string,shared_ptr<Mesh>>(path,tm));
+        return tm;
+    }
+}*/

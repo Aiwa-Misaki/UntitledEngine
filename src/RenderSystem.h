@@ -10,8 +10,9 @@
 #include <GLFW/glfw3.h>
 #include"Scene.h"
 #include"camera.h"
-#include"Editor.h"
-class Editor;
+#include"GameObject.h"
+#include"Components/MeshRenderer.h"
+#include"Engine.h"
 class Scene;
 class RenderSystem {
 public:

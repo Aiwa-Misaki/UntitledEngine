@@ -12,6 +12,8 @@ Engine::Engine(){
 void Engine::init()
 {
     instance= new Engine();
+    //运行资源管理器初始化
+    RuntimeResManager::init();
     //加载一个游戏工程到内存中
     string workUrl="../resource/work";
     Json::Reader reader;
@@ -24,4 +26,6 @@ void Engine::init()
     work= make_shared<Work>(read_value);
     cout<<"加载项目"<<work->name<<"成功"<<endl;
     in.close();
+
+
 }
