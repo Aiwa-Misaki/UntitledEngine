@@ -2,7 +2,37 @@
     "name":"material001",
     "shader_vs":"materials/material001/test.vs",
     "shader_fs":"materials/material001/test.fs",
-    "argument":{
-        
-    }
+    "argument":
+    [
+        {
+            "name":"objectColor",
+            "type":"vec3",
+            "value":[1.0,0.5,0.31]
+        },
+        {
+            "name":"lightColor",
+            "type":"vec3",
+            "value":[1.0,1.0,1.0]
+        },
+        {
+            "name":"lightPos",
+            "type":"vec3"
+        },
+         {
+            "name":"viewPos",
+            "type":"vec3"
+        },
+        {
+            "name":"model",
+            "type":"mat4"
+        },
+        {
+            "name":"view",
+            "type":"mat4"
+        },
+        {
+            "name":"projection",
+            "type":"mat4"
+        }
+    ]
 }
