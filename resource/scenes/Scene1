@@ -15,7 +15,8 @@
 	            {
 	                "name":"MeshRenderer",
 	                "values":{
-	                    "mesh":"meshes/ball.obj"
+	                    "mesh":"meshes/ball.obj",
+                            "material":"materials/material001/material001.json"
 	                }
 	            }
 	        ]
@@ -34,7 +35,8 @@
 	            {
 	                "name":"MeshRenderer",
 	                "values":{
-	                    "mesh":"meshes/ball.obj"
+	                    "mesh":"meshes/ball.obj",
+                            "material":"materials/material001/material001.json"
 	                }
 	            }
 	        ]

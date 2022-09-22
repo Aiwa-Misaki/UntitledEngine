@@ -1,6 +1,6 @@
 #ifndef SHADER_H
 #define SHADER_H
-
+#include"Asset.h"
 #include "../external/glad/glad.h"
 #include<glm/gtc/type_ptr.hpp>
 #include <string>
@@ -9,10 +9,35 @@
 #include <iostream>
 #include <glm/glm.hpp>
 using namespace std;
-class Shader
+class Shader:public Asset
 {
 public:
     unsigned int ID;
+    //传入一个vs的路径或者fs的路径，自动找另一个路径
+    Shader(string path)
+    {
+        string path1=path;
+        bool path_is_vs=false;
+        for(int i=path1.length()-1;i>=0;i--)
+        {
+            if(path1[i]=='v')
+            {
+                path1[i]='f';
+                path_is_vs=true;
+                break;
+            }
+            else if(path1[i]=='f')
+            {
+                path1[i]='v';
+                path_is_vs=false;
+                break;
+            }
+        }
+        if(path_is_vs)
+        Shader(path.c_str(),path1.c_str());
+        else
+            Shader(path1.c_str(),path.c_str());
+    }
     // constructor generates the shader on the fly
     // ------------------------------------------------------------------------
     Shader(const char* vertexPath, const char* fragmentPath)

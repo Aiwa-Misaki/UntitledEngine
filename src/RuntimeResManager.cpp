@@ -4,7 +4,7 @@
 
 #include "RuntimeResManager.h"
 
-shared_ptr<unordered_map<string,shared_ptr<Mesh>>> RuntimeResManager::meshMap= nullptr;
+shared_ptr<unordered_map<string,shared_ptr<Asset>>> RuntimeResManager::assets=nullptr;
 RuntimeResManager *RuntimeResManager::instance= nullptr;
 RuntimeResManager::RuntimeResManager() {
 
@@ -13,7 +13,7 @@ RuntimeResManager::RuntimeResManager() {
 void RuntimeResManager::init()
 {
     instance=new RuntimeResManager();
-    meshMap= make_shared<unordered_map<string,shared_ptr<Mesh>>>();
+    assets= make_shared<unordered_map<string,shared_ptr<Asset>>>();
 
 }
 /*

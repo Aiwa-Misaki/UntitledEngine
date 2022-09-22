@@ -5,6 +5,7 @@
 #ifndef OPENGLTEST_COMPONENTMANAGER_H
 #define OPENGLTEST_COMPONENTMANAGER_H
 #include "RuntimeResManager.h"
+#include"Material.h"
 #include"Components/Component.h"
 #include"mesh.h"
 #include <assimp/Importer.hpp>
@@ -12,6 +13,7 @@
 #include <assimp/postprocess.h>     // Post processing flags
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+
 
 class ComponentManager {
 
@@ -45,10 +47,16 @@ public :
             else if(pt==mesh_type)
             {
                 string meshUrl=value.asString();
-                shared_ptr<Mesh> mesh=RuntimeResManager::getRes<shared_ptr<Mesh>>(meshUrl);
+                shared_ptr<Mesh> mesh=RuntimeResManager::getRes<Mesh>(meshUrl);
                 //cout<<mesh->vertices.size()<<endl;
                 pro.set_value(ins, mesh);
 
+            }
+            else if(pt==type::get<shared_ptr<Material>>())
+            {
+                string url=value.asString();
+                shared_ptr<Material> material=RuntimeResManager::getRes<Material>(url);
+                pro.set_value(ins,material);
             }
         }
     }

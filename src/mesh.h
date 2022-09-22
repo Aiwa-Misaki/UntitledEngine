@@ -4,7 +4,7 @@
 
 #ifndef OPENGLTEST_MESH_H
 #define OPENGLTEST_MESH_H
-
+#include"Asset.h"
 #include<glm/glm.hpp>
 #include<iostream>
 #include <utility>
@@ -31,7 +31,7 @@ struct Texture {
 
     }
 };
-class Mesh {
+class Mesh :public Asset{
 public:
     string url;
     /*  网格数据  */

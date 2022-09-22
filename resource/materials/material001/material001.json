@@ -2,7 +2,7 @@
     "name":"material001",
     "shader_vs":"materials/material001/test.vs",
     "shader_fs":"materials/material001/test.fs",
-    "argument":
+    "params":
     [
         {
             "name":"objectColor",

@@ -40,7 +40,9 @@ registration::class_<MyStruct>("MyStruct")
 
     registration::class_<MeshRenderer>("MeshRenderer")
             .constructor<>()
-            .property("mesh",&MeshRenderer::mesh);
+            .property("mesh",&MeshRenderer::mesh)
+            .property("material",&MeshRenderer::material);
+
 
 }
 
