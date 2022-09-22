@@ -70,8 +70,11 @@ public:
                     }
                 }
             }
-            //TODO:shadery也是一种资源，需要用resmanager管理
             this->shader=RuntimeResManager::getRes<Shader>("../resource/"+shader_vs_path);
+
+            cout<<"name:"<<this->name<<endl;
+            for(auto iter=vec3Map->begin();iter!=vec3Map->end();iter++)
+                cout<<"param:"<<iter->first<<" "<<iter->second.x<<" "<<iter->second.y<<" "<<iter->second.z<<endl;
 
 
         }
