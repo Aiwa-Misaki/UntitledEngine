@@ -30,22 +30,27 @@ public:
         Json::Reader reader;
         Json::Value read_value;
         reader.parse(str_json,read_value);
+        //cout<<"json:"<<str_json<<endl;
         int size=read_value.getMemberNames().size();
+        cout<<"size:"<<size<<endl;
         for(int i=0;i<size;i++)
         {
+            cout<<"i:"<<i<<endl;
             string key=read_value.getMemberNames()[i];
+            cout<<"key:"<<key<<endl;
+            //cout<<"value:"<<read_value[key].asString();
             if(key=="name")
             {
                 this->name=read_value[key].asString();
             }
             else if(key=="shader_vs")
             {
-                shader_vs_path=read_value[key].asString();
+                this->shader_vs_path=read_value[key].asString();
 
             }
             else if(key=="shader_fs")
             {
-                shader_fs_path=read_value[key].asString();
+                this->shader_fs_path=read_value[key].asString();
             }
             else if(key=="params")
             {
@@ -70,14 +75,17 @@ public:
                     }
                 }
             }
-            this->shader=RuntimeResManager::getRes<Shader>("../resource/"+shader_vs_path);
-
-            cout<<"name:"<<this->name<<endl;
-            for(auto iter=vec3Map->begin();iter!=vec3Map->end();iter++)
-                cout<<"param:"<<iter->first<<" "<<iter->second.x<<" "<<iter->second.y<<" "<<iter->second.z<<endl;
 
 
         }
+
+        cout<<"shader_vs_path:"<<shader_vs_path<<endl;
+        this->shader=RuntimeResManager::getRes<Shader>("../resource/"+shader_vs_path);
+
+        cout<<"name:"<<this->name<<endl;
+        for(auto iter=vec3Map->begin();iter!=vec3Map->end();iter++)
+            cout<<"param:"<<iter->first<<" "<<iter->second.x<<" "<<iter->second.y<<" "<<iter->second.z<<endl;
+
         in.close();
     }
 };

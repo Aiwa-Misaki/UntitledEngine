@@ -33,15 +33,19 @@ public:
                 break;
             }
         }
+        Shader *s;
         if(path_is_vs)
-        Shader(path.c_str(),path1.c_str());
+        s=new Shader(path.c_str(),path1.c_str());
         else
-            Shader(path1.c_str(),path.c_str());
+            s=new Shader(path1.c_str(),path.c_str());
+        this->ID=s->ID;
+
     }
     // constructor generates the shader on the fly
     // ------------------------------------------------------------------------
     Shader(const char* vertexPath, const char* fragmentPath)
     {
+
         // 1. retrieve the vertex/fragment source code from filePath
         std::string vertexCode;
         std::string fragmentCode;
@@ -86,6 +90,7 @@ public:
         checkCompileErrors(fragment, "FRAGMENT");
         // shader Program
         ID = glCreateProgram();
+        cout<<"ID:"<<ID<<endl;
         glAttachShader(ID, vertex);
         glAttachShader(ID, fragment);
         glLinkProgram(ID);

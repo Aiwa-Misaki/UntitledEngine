@@ -4,9 +4,7 @@
 
 #include "RenderSystem.h"
 
-RenderSystem::RenderSystem(shared_ptr<Scene> scene) :
-lightingShader("../2.2.basic_lighting.vs", "../2.2.basic_lighting.fs"),
-lightCubeShader("../2.2.light_cube.vs", "../2.2.light_cube.fs"){
+RenderSystem::RenderSystem(shared_ptr<Scene> scene) {
 
     // configure global opengl state
     // -----------------------------
@@ -63,6 +61,59 @@ void RenderSystem::tick()
     glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+    for(auto i=Engine::getCurWork()->curScene->gameObjectNameList->begin();
+        i!=Engine::getCurWork()->curScene->gameObjectNameList->end();i++)
+    {
+        string key=*i;
+        auto obj=Engine::getCurWork()->curScene->gameObjectList->at(key);
+        auto mr=obj->getComponent<MeshRenderer>();
+        if(mr==nullptr)
+            continue;
+        auto mat=mr->material;
+        auto shader=mat->shader;
+        shader->use();
+        //给shader传递自定义变量
+        {
+            if(mat->vec3Map->size()>0)
+            {
+                for(auto iter=mat->vec3Map->begin();iter!=mat->vec3Map->end();iter++)
+                {
+                    shader->setVec3(iter->first,iter->second);
+                                  }
+            }
+        }
+        //给shader传递公共变量
+        {
+            //光源位置
+            shader->setVec3("lightPos", lightPos);
+            //光源颜色
+            shader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 1.0f));
+            //摄像机位置
+            shader->setVec3("viewPos", camera.Position);
+            //物体m矩阵
+            glm::mat4 model = glm::mat4(1.0f);
+            model=glm::scale(model,obj->getComponent<Transform>()->scale);
+            model=glm::rotate(model,glm::radians(obj->getComponent<Transform>()->rotation[0]),
+                              glm::vec3(1,0,0));
+            model=glm::rotate(model,glm::radians(obj->getComponent<Transform>()->rotation[1]),
+                              glm::vec3(0,1,0));
+            model=glm::rotate(model,glm::radians(obj->getComponent<Transform>()->rotation[2]),
+                              glm::vec3(0,0,1));
+            model=glm::translate(model,obj->getComponent<Transform>()->position);
+
+            shader->setMat4("model", model);
+
+            glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)1920 / (float)1080, 0.1f, 100.0f);
+            glm::mat4 view = camera.GetViewMatrix();
+            shader->setMat4("projection", projection);
+            shader->setMat4("view", view);
+        }
+        //渲染物体
+        glBindVertexArray(mr->mesh->VAO);
+        glDrawArrays(GL_TRIANGLES,0,mr->mesh->indices.size());
+    }
+
+    /*
     // be sure to activate shader when setting uniforms/drawing objects
     lightingShader.use();
     lightingShader.setVec3("objectColor", glm::vec3(1.0f, 0.5f, 0.31f));
@@ -107,21 +158,7 @@ void RenderSystem::tick()
         //渲染这个物体的mesh
         glBindVertexArray(mr->mesh->VAO);
         glDrawArrays(GL_TRIANGLES,0,mr->mesh->indices.size());
-    }
+    }*/
 
 
-
-    /*
-    // also draw the lamp object
-    lightCubeShader.use();
-    lightCubeShader.setMat4("projection", projection);
-    lightCubeShader.setMat4("view", view);
-    model = glm::mat4(1.0f);
-    model = glm::translate(model, lightPos);
-    model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
-    lightCubeShader.setMat4("model", model);
-
-    glBindVertexArray(lightCubeVAO);
-    glDrawArrays(GL_TRIANGLES, 0, 36);
-     */
 }

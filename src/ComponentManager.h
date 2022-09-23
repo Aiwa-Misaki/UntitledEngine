@@ -48,7 +48,6 @@ public :
             {
                 string meshUrl=value.asString();
                 shared_ptr<Mesh> mesh=RuntimeResManager::getRes<Mesh>(meshUrl);
-                //cout<<mesh->vertices.size()<<endl;
                 pro.set_value(ins, mesh);
 
             }

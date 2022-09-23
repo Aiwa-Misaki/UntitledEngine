@@ -22,11 +22,12 @@ public:
     //这里的T请传入指针类型
     template<typename T>
     static shared_ptr<T> getRes(string path){
+
         type t=type::get<T>();
         for(auto iter=assets->begin();iter!=assets->end();iter++)
         {
             type t1=type::get(*(iter->second));
-            if(t==t1&&iter->first==path)//该资源已经保存过了，直接取出
+            if(iter->first==path)//该资源已经保存过了，直接取出
             {
                 shared_ptr<T> child_ptr= dynamic_pointer_cast<T>(iter->second);
                 return child_ptr;

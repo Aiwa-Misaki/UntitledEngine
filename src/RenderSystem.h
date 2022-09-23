@@ -20,7 +20,7 @@ public:
     RenderSystem(shared_ptr<Scene> scene);
     void meshSubmit(shared_ptr<Mesh> mesh);
     void tick();
-    Shader lightingShader,lightCubeShader;
+
 };
 
 
